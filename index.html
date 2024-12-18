@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de Compras</title>
+    <link rel="stylesheet" href="./index.css">
+    
+</head>
+<body>
+    <main class="list">
+        <header class="title">
+            <h1>Lista de Compras</h1>
+        </header>
+
+        <h2 class="title-inputs">Adicione os Itens</h2>
+        <section class="form-input">
+            
+            <form class="form-entrys" id="form-entrys">
+                
+                <label for="name">Item:</label>
+                <input type="text" id="name" class="all-inputs"><br>
+        
+                <label for="quantity">Quantidade:</label>
+                <input type="number" id="quantity" class="all-inputs"><br>
+            
+                <label for="value">Valor:</label>
+                <input type="text" id="value" class="all-inputs"><br>
+            
+                <button id="btn-save">Salvar</button>
+                
+            </form>
+
+            <div class="painel-values">
+                <h3>Valor Total:</h3>
+                <input disabled class="painels" id="total-value" step="0.01"></input>
+                <h3>Quantidade de Itens:</h3>
+                <input disabled class="painels" id="quantity-value"></input>
+            </div>
+        </section>
+
+        <h2 class="title-itens">Itens</h2>
+
+        <section class="list-content" id="list-content">
+            
+        </section>
+    </main>
+    <script src="./index.js"></script>
+</body>
+</html>

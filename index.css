@@ -1,0 +1,100 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: rgb(172, 206, 218);
+}
+
+.list {
+    width: 500px;
+    height: 100vh;
+    margin: 0 auto;
+    border: 1px black solid;
+    background-color: rgb(5, 74, 77);
+}
+
+.title {
+    text-align: center;
+    margin: 10px auto 20px auto;
+}
+
+.form-input {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: left;
+}
+
+/*Ajuste dos campos inputs*/
+
+.title-inputs {
+    margin: 20px;
+}
+
+.form-entrys {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+    margin: 0px 50px 0px 0;
+}
+
+.inputs inputs {
+    height: 10px;
+}
+
+input {
+    color: black;
+}
+
+.painel-values{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+}
+
+.painels {
+    width: 100px;
+    height: 35px;
+    background-color: antiquewhite;
+    
+}
+
+#btn-save {
+    width: 100px;
+    height: 30px;
+    margin: 0 auto;
+    background-color: chartreuse;
+    border-radius: 10px;
+    font-weight: 700;
+    color: rgb(5, 74, 77);
+}
+
+
+
+.title-itens {
+    text-align: center;
+}
+
+.list-content {
+    margin-top: 20px;
+    display: flex;  
+    flex-direction: column;
+    gap: 5px;  
+}
+
+.box-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: start;
+}
+
+.box-item span,input {
+    width: 100px;
+}
+
+/*#quantity {
+    width: ;
+}
