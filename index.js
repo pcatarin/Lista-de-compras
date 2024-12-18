@@ -24,6 +24,10 @@ async function fetchItens () {
 
 console.log(fetchItens())
 
+function substituir (el) {
+    el.value = el.value.replace(",",".")
+}
+
 let listItens = []
 
 /***********************************************************************************************/
