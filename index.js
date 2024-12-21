@@ -50,10 +50,9 @@ function createNameItem (name) {
 }
 
 function createQuantityItem (quantity) {
-    const quantityItem = document.createElement('input')
-    quantityItem.type = 'number'
+    const quantityItem = document.createElement('span')
     quantityItem.classList.add('quantity-item')
-    quantityItem.value = quantity
+    quantityItem.textContent = quantity
     return quantityItem
 }
 
@@ -86,6 +85,20 @@ function createAmountIten (amount) {
     amountIten.textContent = formater.format(amount)
     
     return amountIten
+}
+
+function createEditButton () {
+    const editButton = document.createElement('i')
+    editButton.classList.add('btn', 'fa-solid', 'fa-pen-to-square')
+    editButton.id = 'edit-btn'
+    return editButton
+}
+
+function createRemoveButton () {
+    const removeButton = document.createElement('i')
+    removeButton.classList.add('btn','fa-solid', 'fa-trash-can')
+    removeButton.id = 'remove-btn'
+    return removeButton
 }
 
 function saveNewIten (ev) {
@@ -124,8 +137,10 @@ function renderItens (iten) {
     const quantity = createQuantityItem(iten.quantity)
     const value = createValueItem(iten.value)
     const amount = createAmountIten(iten.amount)
+    const edit = createEditButton()
+    const remove = createRemoveButton()
 
-    container.append(name, quantity, value, amount)
+    container.append(name, quantity, value, amount, edit, remove)
     document.querySelector('#list-content').append(container)
 }
 

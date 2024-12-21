@@ -63,6 +63,10 @@ input {
     
 }
 
+.all-inputs {
+    width: 100px;
+}
+
 #btn-save {
     width: 100px;
     height: 30px;
@@ -73,7 +77,7 @@ input {
     color: rgb(5, 74, 77);
 }
 
-
+/*-Ajuste da lista-*/
 
 .title-itens {
     text-align: center;
@@ -87,12 +91,19 @@ input {
 }
 
 .box-item {
+    width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 2fr 2fr 2fr 1fr 1fr;
+    gap: 5px;
     justify-items: start;
+    padding: 5px;
 }
 
-.box-item span,input {
+.btn {
+    cursor: pointer;
+}
+
+.box-item span input {
     width: 100px;
 }
 
