@@ -12,32 +12,45 @@
     margin: 0 auto;
     border: 1px black solid;
     background-color: rgb(5, 74, 77);
+    /* display: flex;
+    flex-direction: column;
+    gap: 0; */
+   
 }
 
 .title {
     text-align: center;
-    margin: 10px auto 20px auto;
+    margin: 10px auto 0px auto;
 }
+
+
+
+/*Ajuste dos campos inputs inicio*/
 
 .form-input {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: left;
+    margin: auto;
+    border: 6px solid rgb(4, 41, 58);
+    box-shadow: 0px 0px 6px 1px black;
 }
 
-/*Ajuste dos campos inputs*/
-
 .title-inputs {
-    margin: 20px;
+    margin: 0.8rem auto 0.8rem .5rem ;
+    text-align: center;
 }
 
 .form-entrys {
     display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 0;
-    margin: 0px 50px 0px 0;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5px;
+    padding: 5px 0 0 0;
 }
 
 .inputs inputs {
@@ -50,44 +63,71 @@ input {
 
 .painel-values{
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-right: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    max-width: 100%;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
     margin-bottom: 10px;
+    text-align: left;
 }
 
 .painels {
     width: 100px;
-    height: 35px;
-    background-color: antiquewhite;
-    
+    height: 25px;
+    font-size: 1.2rem;
+    text-align: left;
+}
+
+#title-amount {
+    width: 46px;
+}
+
+#total-value {
+    text-align: left;
+}
+
+#quantity-value {
+    text-align: center;
 }
 
 .all-inputs {
-    width: 100px;
+    width: 4.3rem;
 }
 
 #btn-save {
     width: 100px;
     height: 30px;
-    margin: 0 auto;
+    margin: 1rem auto;
     background-color: chartreuse;
     border-radius: 10px;
     font-weight: 700;
     color: rgb(5, 74, 77);
 }
 
+/*Ajuste dos campos inputs fim*/
+
 /*-Ajuste da lista-*/
 
 .title-itens {
+    margin-top: 10px;
     text-align: center;
 }
 
 .list-content {
-    margin-top: 20px;
+    height: 100vh;
+    max-height: 265px;
+    margin-top: 10px;
     display: flex;  
     flex-direction: column;
-    gap: 5px;  
+    gap: 5px;
+    padding: 5px;
+    border: 6px solid rgb(4, 41, 58);
+    box-shadow: 0px 0px 6px 1px black;  
+    overflow-y: auto;
 }
 
 .box-item {
@@ -97,6 +137,7 @@ input {
     gap: 5px;
     justify-items: start;
     padding: 5px;
+    
 }
 
 .btn {
@@ -107,6 +148,3 @@ input {
     width: 100px;
 }
 
-/*#quantity {
-    width: ;
-}

@@ -34,6 +34,8 @@ let listItens = []
 /***********************************************************************************************/
 /***********************************************************************************************/
 
+/************Criação dos elementos HTML para renderização************Inicio*****************************************/
+
 function createConteinerItens (id) {
     const conteiner = document.createElement('div')
     conteiner.classList.add('box-item')
@@ -100,7 +102,13 @@ function createRemoveButton () {
     removeButton.id = 'remove-btn'
     return removeButton
 }
+/*-----------------------------------------------------------------------------------------------------------------*/
+/************Criação dos elementos HTML para renderização********************Fim************************************/
+/*-----------------------------------------------------------------------------------------------------------------*/
 
+/*-----------------------------------------------------------------------------------------------------------------*/
+/************Função que Salva novos itens salva no array e renderiza na chamada de um evento************************/
+/*----------------------------------Inicio-------------------------------------------------------------------------*/
 function saveNewIten (ev) {
     ev.preventDefault()
 
@@ -121,15 +129,28 @@ function saveNewIten (ev) {
         renderItens(newIten)
         
         console.log(listItens)
-        console.log(createAmountIten())
-        document.querySelector('#total-value').value = listItens.reduce((sum, iten) => sum + iten.amount, 0)
-        document.querySelector('#quantity-value').value = listItens.reduce((sum, iten) => sum + iten.quantity, 0)
+        const formater = Intl.NumberFormat('pt-BR', {
+            compactDisplay: 'long',
+            currency: 'BRL',
+            style: 'currency'
+        })
+        const amountValue = formater.format(listItens.reduce((sum, iten) => sum + iten.amount, 0))
+        
+        document.querySelector('#total-value').textContent = amountValue
+        document.querySelector('#quantity-value').textContent = listItens.reduce((sum, iten) => sum + iten.quantity, 0)
 
         ev.target.reset()
     }
     
     
 }
+/*-------------------------------Fim-------------------------------------------------------------------------------*/
+/************Função que Salva novos itens salva no array e renderiza na chamada de um evento************************/
+/*-----------------------------------------------------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------------------------------------------------*/
+/************Função para renderização dos elementos chamada na função acima*****************************************/
+/*----------------------------------Inicio-------------------------------------------------------------------------*/
 
 function renderItens (iten) {
     const container = createConteinerItens(iten.id)
@@ -143,33 +164,22 @@ function renderItens (iten) {
     container.append(name, quantity, value, amount, edit, remove)
     document.querySelector('#list-content').append(container)
 }
+/*-----------------------------------fim---------------------------------------------------------------------------*/
+/************Função para renderização dos elementos chamada na função acima*****************************************/
+/*-----------------------------------------------------------------------------------------------------------------*/
 
-// const btnSave = document.querySelector('#btn-save')
-// btnSave.addEventListener('click', (ev) => {
-//     ev.preventDefault()
-//     listItens.push(saveNewIten())
-
-//     setup()
-//     console.log(listItens)
-    
-//     document.querySelector('#name').value = ''
-//     document.querySelector('#quantity').value = ''
-//     document.querySelector('#value').value = ''
-// })
-
+/*-----------------------------------------------------------------------------------------------------------------*/
+/************Função para trazer a lista chamada no carregamento da página*******************************************/
+/*----------------------------------Inicio-------------------------------------------------------------------------*/
 async function setup () {
     const results = await fetchItens()
     listItens.push(...results)
     listItens.forEach(renderItens)
 }
+/*------------------------------------Fim---------------------------------------------------------------------------*/
+/************Função para trazer a lista chamada no carregamento da página*******************************************/
+/*-----------------------------------------------------------------------------------------------------------------*/
 
 document.addEventListener('DOMContentLoaded', setup)
 document.querySelector('#form-entrys').addEventListener('submit', saveNewIten)
 
-// {
-// method: 'POST',
-//         body: JSON.stringify({ name, quantity, value }),
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     }
