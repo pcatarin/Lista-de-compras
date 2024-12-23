@@ -7,7 +7,7 @@
 
 .list {
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     height: 100vh;
     margin: 0 auto;
     border: 1px black solid;
@@ -119,7 +119,7 @@ input {
 
 .list-content {
     height: 100vh;
-    max-height: 265px;
+    max-height: 310px;
     margin-top: 10px;
     display: flex;  
     flex-direction: column;
