@@ -72,9 +72,10 @@ function createValueItem (value) {
     return valueItem
 }
 
-function createAmountIten (amount) {
+function createAmountIten (amount, id) {
     const amountIten = document.createElement('span')
     amountIten.classList.add('amount-item')
+    amountIten.id = `amount-item${id}`
     const quantity = document.querySelector('#quantity').value
     const value = document.querySelector('#value').value
     const formater = Intl.NumberFormat('pt-BR', {
@@ -127,7 +128,9 @@ function createAddButton () {
         })
         
         const amountValue = formater.format(listItens.reduce((sum, iten) => sum + iten.amount, 0))
-        
+        const amountFormat = formater.format(found.amount)
+
+        document.querySelector(`#amount-item${idIten}`).textContent = amountFormat
         document.querySelector('#total-value').textContent = amountValue
         document.querySelector('#quantity-value').textContent = listItens.reduce((sum, iten) => sum + iten.quantity, 0)
         //document.querySelector('.amount-item').textContent = found.quantity * found.value
@@ -162,7 +165,9 @@ function createRemButton () {
         
         const amountValueRem = formater.format(listItens.reduce((rem, iten) => iten.amount - rem , amountValue-1))
         const amountValueForm = formater.format(amountValue)
+        const amountFormat = formater.format(found.amount)
 
+        document.querySelector(`#amount-item${idIten}`).textContent = amountFormat
         document.querySelector('#total-value').textContent = amountValueForm
         document.querySelector('#quantity-value').textContent = quantiyValue
         //document.querySelector('.amount-item').textContent = found.quantity * found.value
@@ -231,7 +236,7 @@ function renderItens (iten) {
     const name = createNameItem(iten.name)
     const quantity = createQuantityItem(iten.quantity,iten.id)
     const value = createValueItem(iten.value)
-    const amount = createAmountIten(iten.amount)
+    const amount = createAmountIten(iten.amount,iten.id)
     const edit = createEditButton()
     const remove = createRemoveButton()
     const add = createAddButton()
