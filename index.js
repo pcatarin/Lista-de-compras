@@ -105,6 +105,24 @@ function createRemoveButton () {
     const removeButton = document.createElement('i')
     removeButton.classList.add('btn','fa-solid', 'fa-trash-can')
     removeButton.id = 'remove-btn'
+    removeButton.addEventListener('click', () => {
+        const parentId = removeButton.parentElement.id
+        let arrIten = parentId.split('-')
+        let idIten = parseInt(arrIten.slice(length-1))
+        const findIndex = listItens.findIndex((i) => i.id === idIten)
+        let found = listItens.find((element) => element.id === idIten)
+        
+        const quantityValue = document.querySelector('#quantity-value').textContent -= found.quantity
+        
+
+        listItens.splice(findIndex, 1)
+        let amountValue = document.querySelector('#total-value').textContent = listItens.reduce((sub, iten) => sub + iten.amount, 0)
+
+        console.log(amountValue)
+        console.log(listItens)
+        removeButton.parentElement.remove()
+    })  
+
     return removeButton
 }
 
@@ -133,7 +151,7 @@ function createAddButton () {
         document.querySelector(`#amount-item${idIten}`).textContent = amountFormat
         document.querySelector('#total-value').textContent = amountValue
         document.querySelector('#quantity-value').textContent = listItens.reduce((sum, iten) => sum + iten.quantity, 0)
-        //document.querySelector('.amount-item').textContent = found.quantity * found.value
+        
         console.log(listItens)
     })
    
@@ -170,7 +188,7 @@ function createRemButton () {
         document.querySelector(`#amount-item${idIten}`).textContent = amountFormat
         document.querySelector('#total-value').textContent = amountValueForm
         document.querySelector('#quantity-value').textContent = quantiyValue
-        //document.querySelector('.amount-item').textContent = found.quantity * found.value
+        
         console.log(listItens)
         console.log(found)
         console.log(amountValue)
