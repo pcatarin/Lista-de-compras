@@ -51,9 +51,10 @@ function createNameItem (name) {
     return nameItemBox
 }
 
-function createQuantityItem (quantity) {
+function createQuantityItem (quantity,id) {
     const quantityItem = document.createElement('span')
     quantityItem.classList.add('quantity-item')
+    quantityItem.id = `quantity-item${id}`
     quantityItem.textContent = quantity
     return quantityItem
 }
@@ -93,6 +94,9 @@ function createEditButton () {
     const editButton = document.createElement('i')
     editButton.classList.add('btn', 'fa-solid', 'fa-pen-to-square')
     editButton.id = 'edit-btn'
+    editButton.addEventListener('click', () => {
+
+    })
     return editButton
 }
 
@@ -101,6 +105,76 @@ function createRemoveButton () {
     removeButton.classList.add('btn','fa-solid', 'fa-trash-can')
     removeButton.id = 'remove-btn'
     return removeButton
+}
+
+function createAddButton () {
+    const addBtn = document.createElement('i')
+    addBtn.classList.add('edit-btn','fa-solid', 'fa-plus')
+    addBtn.id = 'add-btn'
+    addBtn.addEventListener('click', () => {
+        const parentId = addBtn.parentElement.id
+        let arrIten = parentId.split('-')
+        let idIten = parseInt(arrIten.slice(length-1))
+        let found = listItens.find((element) => element.id === idIten)
+        let add = document.querySelector(`#quantity-item${idIten}`).textContent++
+        
+        found.quantity++
+        found.amount = found.quantity * found.value
+        const formater = Intl.NumberFormat('pt-BR', {
+            compactDisplay: 'long',
+            currency: 'BRL',
+            style: 'currency'
+        })
+        
+        const amountValue = formater.format(listItens.reduce((sum, iten) => sum + iten.amount, 0))
+        
+        document.querySelector('#total-value').textContent = amountValue
+        document.querySelector('#quantity-value').textContent = listItens.reduce((sum, iten) => sum + iten.quantity, 0)
+        //document.querySelector('.amount-item').textContent = found.quantity * found.value
+        console.log(listItens)
+    })
+   
+    return addBtn
+}
+
+function createRemButton () {
+    const remBtn = document.createElement('i')
+    remBtn.classList.add('edit-btn','fa-solid', 'fa-minus')
+    remBtn.id = 'rem-btn'
+    remBtn.addEventListener('click', () => {
+        const parentId = remBtn.parentElement.id
+        let arrIten = parentId.split('-')
+        let idIten = parseInt(arrIten.slice(length-1))
+        let found = listItens.find((element) => element.id === idIten)
+        found.quantity--
+        found.amount = found.quantity * found.value
+        let remIten = document.querySelector(`#quantity-item${idIten}`).textContent--
+        const amountValue = listItens.reduce((sum, iten) => sum + iten.amount, 0)
+        const quantiyValue = listItens.reduce((sum, iten) => sum + iten.quantity, 0)
+        const itenValue = listItens.reduce((sum, iten) => sum + iten.value, 0)
+
+        
+        const formater = Intl.NumberFormat('pt-BR', {
+            compactDisplay: 'long',
+            currency: 'BRL',
+            style: 'currency'
+        })
+        
+        const amountValueRem = formater.format(listItens.reduce((rem, iten) => iten.amount - rem , amountValue-1))
+        const amountValueForm = formater.format(amountValue)
+
+        document.querySelector('#total-value').textContent = amountValueForm
+        document.querySelector('#quantity-value').textContent = quantiyValue
+        //document.querySelector('.amount-item').textContent = found.quantity * found.value
+        console.log(listItens)
+        console.log(found)
+        console.log(amountValue)
+        console.log(quantiyValue)
+        console.log(remIten)
+        console.log(idIten)
+
+    })
+    return remBtn
 }
 /*-----------------------------------------------------------------------------------------------------------------*/
 /************Criação dos elementos HTML para renderização********************Fim************************************/
@@ -128,7 +202,7 @@ function saveNewIten (ev) {
         listItens.push(newIten) 
         renderItens(newIten)
         
-        console.log(listItens)
+        
         const formater = Intl.NumberFormat('pt-BR', {
             compactDisplay: 'long',
             currency: 'BRL',
@@ -155,13 +229,15 @@ function saveNewIten (ev) {
 function renderItens (iten) {
     const container = createConteinerItens(iten.id)
     const name = createNameItem(iten.name)
-    const quantity = createQuantityItem(iten.quantity)
+    const quantity = createQuantityItem(iten.quantity,iten.id)
     const value = createValueItem(iten.value)
     const amount = createAmountIten(iten.amount)
     const edit = createEditButton()
     const remove = createRemoveButton()
+    const add = createAddButton()
+    const rem = createRemButton()
 
-    container.append(name, quantity, value, amount, edit, remove)
+    container.append(name, rem, quantity, add, value, amount, edit, remove)
     document.querySelector('#list-content').append(container)
 }
 /*-----------------------------------fim---------------------------------------------------------------------------*/

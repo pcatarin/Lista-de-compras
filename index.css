@@ -8,7 +8,7 @@
 .list {
     width: 100%;
     max-width: 420px;
-    height: 100vh;
+    
     margin: 0 auto;
     border: 1px black solid;
     background-color: rgb(5, 74, 77);
@@ -29,13 +29,14 @@
 
 .form-input {
     display: flex;
-    flex-direction: column;
+    flex-direction: ;
     justify-content: center;
     align-items: center;
     text-align: left;
     margin: auto;
     border: 6px solid rgb(4, 41, 58);
     box-shadow: 0px 0px 6px 1px black;
+    height: max-content;
 }
 
 .title-inputs {
@@ -45,12 +46,14 @@
 
 .form-entrys {
     display: flex;
+    flex-direction: column;
     max-width: 100%;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 2.5px;
     padding: 5px 0 0 0;
+    margin: 0 0 0 1rem;
 }
 
 .inputs inputs {
@@ -63,6 +66,7 @@ input {
 
 .painel-values{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10px;
@@ -133,8 +137,8 @@ input {
 .box-item {
     width: 100%;
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr 1fr 1fr;
-    gap: 5px;
+    grid-template-columns: 2fr 1fr 1fr 1fr 2fr 2fr 1fr 1fr;
+    gap: 3px;
     justify-items: start;
     padding: 5px;
     
