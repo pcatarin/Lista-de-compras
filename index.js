@@ -113,10 +113,16 @@ function createRemoveButton () {
         let found = listItens.find((element) => element.id === idIten)
         
         const quantityValue = document.querySelector('#quantity-value').textContent -= found.quantity
+
+        const formater = Intl.NumberFormat('pt-BR', {
+            compactDisplay: 'long',
+            currency: 'BRL',
+            style: 'currency'
+        })
         
 
         listItens.splice(findIndex, 1)
-        let amountValue = document.querySelector('#total-value').textContent = listItens.reduce((sub, iten) => sub + iten.amount, 0)
+        let amountValue = document.querySelector('#total-value').textContent = formater.format(listItens.reduce((sub, iten) => sub + iten.amount, 0))
 
         console.log(amountValue)
         console.log(listItens)
