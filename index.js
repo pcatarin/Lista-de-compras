@@ -108,7 +108,7 @@ function createRemoveButton () {
     removeButton.addEventListener('click', () => {
         const parentId = removeButton.parentElement.id
         let arrIten = parentId.split('-')
-        let idIten = parseInt(arrIten.slice(length-1))
+        let idIten = arrIten[1]
         const findIndex = listItens.findIndex((i) => i.id === idIten)
         let found = listItens.find((element) => element.id === idIten)
         
@@ -133,8 +133,9 @@ function createAddButton () {
     addBtn.addEventListener('click', () => {
         const parentId = addBtn.parentElement.id
         let arrIten = parentId.split('-')
-        let idIten = parseInt(arrIten.slice(length-1))
+        let idIten = arrIten[1]
         let found = listItens.find((element) => element.id === idIten)
+
         let add = document.querySelector(`#quantity-item${idIten}`).textContent++
         
         found.quantity++
@@ -165,7 +166,7 @@ function createRemButton () {
     remBtn.addEventListener('click', () => {
         const parentId = remBtn.parentElement.id
         let arrIten = parentId.split('-')
-        let idIten = parseInt(arrIten.slice(length-1))
+        let idIten = arrIten[1]
         let found = listItens.find((element) => element.id === idIten)
         found.quantity--
         found.amount = found.quantity * found.value
@@ -213,7 +214,7 @@ function saveNewIten (ev) {
     const quantity = parseFloat(document.querySelector('#quantity').value)
     const value = parseFloat(document.querySelector('#value').value)
     const amount = quantity * value
-    const id = listItens.length + 1
+    const id = Math.random().toString(36).substring(2, 4+2)
     
     if ( !quantity || !value ) {
         window.alert('Quantidade e Valor devem ser números ')
